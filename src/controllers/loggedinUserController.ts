@@ -19,7 +19,7 @@ export const getUserData = async (req: any, res: any) => {
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
       include: {
-        loggedInUser: true,  // Include related LoggedInUser data
+        LoggedInUser: true,  // Include related LoggedInUser data
       },
     });
 
@@ -31,7 +31,7 @@ export const getUserData = async (req: any, res: any) => {
     return res.status(200).json({
       message: "User data retrieved successfully",
       userData: {...user},
-      loggedInUser: user.loggedInUser,
+      loggedInUser: user.LoggedInUser,
     });
 
   } catch (error) {

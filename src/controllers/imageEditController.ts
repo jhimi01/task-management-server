@@ -27,7 +27,7 @@ export const imageEditController = async (req: any, res: any) => {
 
     return res.status(200).json({
       message: "User profile updated successfully",
-      user: updatedUser,
+      userData: updatedUser,
     });
   } catch (error) {
     console.error("Error updating user profile:", error);

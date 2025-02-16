@@ -7,15 +7,8 @@ export const signup = async (req: any, res: any) => {
   const {
     email,
     password,
-    firstName,
-    lastName,
-    title,
-    dateOfBirth,
-    gender,
-    address,
-    mobileNumber,
-    country,
-    nid,
+    name,
+    userName,
   } = req.body;
 
   try {
@@ -32,17 +25,10 @@ export const signup = async (req: any, res: any) => {
       data: {
         email,
         password: hashedPassword,
-        firstName,
-        lastName,
-        title,
-        dateOfBirth: new Date(dateOfBirth).toISOString(),
-        gender,
+        name,
+        userName,
         otp,
         otpExpiration,
-        address,
-        mobileNumber,
-        country,
-        nid,
       },
     });
 

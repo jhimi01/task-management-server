@@ -69,6 +69,7 @@ export const changePasswordController = async (req: any, res: any) => {
     return res.status(200).json({
       message: "Password updated successfully",
       token: newToken, // Return the new token
+      userData: user
     });
   } catch (err) {
     console.error("Error during password reset:", err);

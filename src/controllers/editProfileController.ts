@@ -18,30 +18,18 @@ export const editProfileController = async (req: any, res: any) => {
 
     // Validate and extract only the fields to update
     const {
-      firstName,
-      lastName,
+      name,
+      userName,
       email,
-      mobileNumber,
-      dateOfBirth,
-      gender,
-      nid,
-      country,
-      title,
-      address,
+      bio,
     } = req.body;
 
     // Create an update object with only the provided fields
     const updateData: any = {};
-    if (firstName) updateData.firstName = firstName;
-    if (lastName) updateData.lastName = lastName;
+    if (name) updateData.name = name;
+    if (userName) updateData.userName = userName;
     if (email) updateData.email = email;
-    if (mobileNumber) updateData.mobileNumber = mobileNumber;
-    if (dateOfBirth) updateData.dateOfBirth = new Date(dateOfBirth);
-    if (gender) updateData.gender = gender;
-    if (nid) updateData.nid = nid;
-    if (country) updateData.country = country;
-    if (title) updateData.title = title;
-    if (address) updateData.address = address;
+    if (bio) updateData.bio = bio;
 
     // Update the user in the database
     const updatedUser = await prisma.user.update({
@@ -51,7 +39,7 @@ export const editProfileController = async (req: any, res: any) => {
 
     return res.status(200).json({
       message: "User profile updated successfully",
-      user: updatedUser,
+      userData: updatedUser,
     });
   } catch (error) {
     console.error("Error updating user profile:", error);
