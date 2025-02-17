@@ -5,12 +5,8 @@
 // EMAIL_USER=talukderjhimi@gmail.com
 // EMAIL_PASS=ybsu hfpl pgqz onqn
 
-
 // RECAPTCHA_SITE_KEY=6LchN7gqAAAAAN1x37YAX0nhMkvuta3w_0ZiRElH
 // RECAPTCHA_SECRET_KEY=6LchN7gqAAAAAAmMXDCh5cYvgXEs22o4J_ZsKpVr
-
-
-
 
 import dotenv from "dotenv";
 import app from "./app";

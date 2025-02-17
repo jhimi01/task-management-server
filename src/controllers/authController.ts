@@ -4,12 +4,7 @@ import { sendOTPEmail } from "../utils/email";
 import { generateOTP } from "../utils/otp";
 
 export const register = async (req: any, res: any) => {
-  const {
-    email,
-    password,
-    name,
-    userName,
-  } = req.body;
+  const { email, password, name, userName } = req.body;
 
   try {
     const existingUser = await prisma.user.findUnique({ where: { email } });

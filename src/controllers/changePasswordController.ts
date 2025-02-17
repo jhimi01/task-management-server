@@ -13,7 +13,6 @@ export const changePasswordController = async (req: any, res: any) => {
     return res.status(401).json({ error: "you can't change password" });
   }
 
-
   try {
     // Decode token to extract the userId
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as {
@@ -69,13 +68,10 @@ export const changePasswordController = async (req: any, res: any) => {
     return res.status(200).json({
       message: "Password updated successfully",
       token: newToken, // Return the new token
-      userData: user
+      userData: user,
     });
   } catch (err) {
     console.error("Error during password reset:", err);
     return res.status(500).send("Error during password reset");
   }
 };
-
-
-

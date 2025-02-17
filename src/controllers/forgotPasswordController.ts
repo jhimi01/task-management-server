@@ -20,7 +20,8 @@ export const forgotPasswordController = async (req: any, res: any) => {
     }
     if (user && !user.password) {
       return res.status(400).json({
-        error: "Try logging in with your Gmail account using the same email address",
+        error:
+          "Try logging in with your Gmail account using the same email address",
       });
     }
 
@@ -29,7 +30,6 @@ export const forgotPasswordController = async (req: any, res: any) => {
       process.env.JWT_SECRET_KEY as string,
       { expiresIn: "7d" }
     );
-
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -70,7 +70,10 @@ export const resetPasswordController = async (req: any, res: any) => {
   }
 
   try {
-    const decoded: any = jwt.verify(token, process.env.JWT_SECRET_KEY as string);
+    const decoded: any = jwt.verify(
+      token,
+      process.env.JWT_SECRET_KEY as string
+    );
 
     if (decoded.userId !== id) {
       return res.status(400).json({ error: "Invalid or expired token" });

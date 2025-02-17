@@ -1,14 +1,11 @@
 import prisma from "../models/userModel";
 import jwt from "jsonwebtoken";
 
+// get all tasks
 export const getMyTasks = async (req: any, res: any) => {
   try {
     // Extract the token from the Authorization header
     const token = req.headers.authorization?.split(" ")[1];
-    // const token = req.headers.get("Authorization")?.split(" ")[1];
-
-    console.log("tooooooooooooken task", token);
-
 
     // Check if the token is provided
     if (!token) {
@@ -84,6 +81,7 @@ export const getMyTask = async (req: any, res: any) => {
   }
 };
 
+// add task
 export const addMyTasks = async (req: any, res: any) => {
   try {
     // Extract the token from the Authorization header
@@ -132,6 +130,7 @@ export const addMyTasks = async (req: any, res: any) => {
   }
 };
 
+// update task
 export const updateMyTasks = async (req: any, res: any) => {
   try {
     // Extract the token from the Authorization header
@@ -198,6 +197,7 @@ export const updateMyTasks = async (req: any, res: any) => {
   }
 };
 
+// delete task
 export const deleteMyTasks = async (req: any, res: any) => {
   try {
     // Extract the token from the Authorization header
@@ -214,16 +214,16 @@ export const deleteMyTasks = async (req: any, res: any) => {
     };
 
     // Get task ID from request params
-    const { taskId } = req.params;
+    const { id } = req.params;
 
-    // Check if taskId is provided
-    if (!taskId) {
+    // Check if id is provided
+    if (!id) {
       return res.status(400).json({ error: "Task ID is required" });
     }
 
     // Find the task to ensure it exists and belongs to the logged-in user
     const task = await prisma.task.findUnique({
-      where: { id: taskId },
+      where: { id: id },
     });
 
     if (!task) {
@@ -238,17 +238,12 @@ export const deleteMyTasks = async (req: any, res: any) => {
 
     // Delete the task
     await prisma.task.delete({
-      where: { id: taskId },
+      where: { id: id },
     });
 
     // Return a success response
     return res.status(200).json({ message: "Task deleted successfully" });
   } catch (err) {
-    // Handle errors
-    // if (err instanceof jwt.JsonWebTokenError) {
-    //   return res.status(401).json({ error: "Invalid token" });
-    // }
-
     console.error("Error deleting task:", err);
     return res.status(500).json({ error: "Internal server error" });
   }
