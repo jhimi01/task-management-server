@@ -5,6 +5,10 @@ export const getMyTasks = async (req: any, res: any) => {
   try {
     // Extract the token from the Authorization header
     const token = req.headers.authorization?.split(" ")[1];
+    // const token = req.headers.get("Authorization")?.split(" ")[1];
+
+    console.log("tooooooooooooken task", token);
+
 
     // Check if the token is provided
     if (!token) {
@@ -25,9 +29,9 @@ export const getMyTasks = async (req: any, res: any) => {
     return res.status(200).json({ tasks: myTasks });
   } catch (err) {
     // Handle errors
-    if (err instanceof jwt.JsonWebTokenError) {
-      return res.status(401).json({ error: "Invalid token" });
-    }
+    // if (err instanceof jwt.JsonWebTokenError) {
+    //   return res.status(401).json({ error: "Invalid token" });
+    // }
 
     console.error("Error fetching user tasks:", err);
     return res.status(500).json({ error: "Internal server error" });
@@ -119,9 +123,9 @@ export const addMyTasks = async (req: any, res: any) => {
     return res.status(201).json({ task: newTask });
   } catch (err) {
     // Handle errors
-    if (err instanceof jwt.JsonWebTokenError) {
-      return res.status(401).json({ error: "Invalid token" });
-    }
+    // if (err instanceof jwt.JsonWebTokenError) {
+    //   return res.status(401).json({ error: "Invalid token" });
+    // }
 
     console.error("Error adding task:", err);
     return res.status(500).json({ error: "Internal server error" });
@@ -241,9 +245,9 @@ export const deleteMyTasks = async (req: any, res: any) => {
     return res.status(200).json({ message: "Task deleted successfully" });
   } catch (err) {
     // Handle errors
-    if (err instanceof jwt.JsonWebTokenError) {
-      return res.status(401).json({ error: "Invalid token" });
-    }
+    // if (err instanceof jwt.JsonWebTokenError) {
+    //   return res.status(401).json({ error: "Invalid token" });
+    // }
 
     console.error("Error deleting task:", err);
     return res.status(500).json({ error: "Internal server error" });

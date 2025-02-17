@@ -3,22 +3,24 @@ import prisma from "../models/userModel";
 
 // Middleware or controller action to fetch logged-in user data
 export const getUserData = async (req: any, res: any) => {
-  
-  
   try {
     const token = req.headers.authorization?.split(" ")[1];
-  
+
+    console.log("tooooooooooooken user", req.headers.authorization);
+
     if (!token) {
       return res.status(401).json({ error: "Authorization token is required" });
     }
     // Verify the JWT token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as { userId: string };
-    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as {
+      userId: string;
+    };
+
     // Find the user by the ID from the decoded token
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
       include: {
-        LoggedInUser: true,  // Include related LoggedInUser data
+        LoggedInUser: true, // Include related LoggedInUser data
       },
     });
 
@@ -29,10 +31,9 @@ export const getUserData = async (req: any, res: any) => {
     // Send the user data along with the logged-in information
     return res.status(200).json({
       message: "User data retrieved successfully",
-      userData: {...user},
+      userData: { ...user },
       loggedInUser: user.LoggedInUser,
     });
-
   } catch (error) {
     console.error("Error during token verification:", error);
     return res.status(401).json({ error: "Invalid or expired token" });

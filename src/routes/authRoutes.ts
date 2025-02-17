@@ -1,6 +1,6 @@
 import express from "express";
 import { signup, verifyOTP } from "../controllers/authController";
-import { login, verifyOTPLogin } from "../controllers/loginController";
+import { login } from "../controllers/loginController";
 import { getUserData } from "../controllers/loggedinUserController";
 import { editProfileController } from "../controllers/editProfileController";
 import { imageEditController } from "../controllers/imageEditController";
@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/register", signup);
 router.post("/verify-otp", verifyOTP);
 router.post("/login", login);
-router.post("/verify-otp-login", verifyOTPLogin);
+// router.post("/verify-otp-login", verifyOTPLogin);
 router.get("/profile", getUserData);
 router.put("/profile", editProfileController);
 router.put("/edit-image", imageEditController);
