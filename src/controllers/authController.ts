@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { sendOTPEmail } from "../utils/email";
 import { generateOTP } from "../utils/otp";
 
-export const signup = async (req: any, res: any) => {
+export const register = async (req: any, res: any) => {
   const {
     email,
     password,
