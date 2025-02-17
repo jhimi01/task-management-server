@@ -30,7 +30,6 @@ export const forgotPasswordController = async (req: any, res: any) => {
       { expiresIn: "7d" }
     );
 
-    console.log(`Generated token: ${token}`);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",

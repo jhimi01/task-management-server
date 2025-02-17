@@ -1,7 +1,6 @@
 import express from "express";
 import { signup, verifyOTP } from "../controllers/authController";
-import { login } from "../controllers/loginController";
-import { verifyOTPLogin } from "../controllers/verifyOtpLogin";
+import { login, verifyOTPLogin } from "../controllers/loginController";
 import { getUserData } from "../controllers/loggedinUserController";
 import { editProfileController } from "../controllers/editProfileController";
 import { imageEditController } from "../controllers/imageEditController";

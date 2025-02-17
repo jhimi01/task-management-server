@@ -11,7 +11,6 @@ export const getUserData = async (req: any, res: any) => {
     if (!token) {
       return res.status(401).json({ error: "Authorization token is required" });
     }
-    // console.log("Received token:", token);
     // Verify the JWT token
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as { userId: string };
     

@@ -24,12 +24,14 @@ export const editProfileController = async (req: any, res: any) => {
       bio,
     } = req.body;
 
+
     // Create an update object with only the provided fields
     const updateData: any = {};
     if (name) updateData.name = name;
     if (userName) updateData.userName = userName;
     if (email) updateData.email = email;
-    if (bio) updateData.bio = bio;
+    if (bio) {updateData.bio = bio} else{updateData.bio = ""};
+
 
     // Update the user in the database
     const updatedUser = await prisma.user.update({
