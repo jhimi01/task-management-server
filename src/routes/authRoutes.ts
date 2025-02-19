@@ -7,11 +7,8 @@ import {
   login,
   logOutController,
 } from "../controllers/loginController";
-import { changePasswordController } from "../controllers/changePasswordController";
-import {
-  forgotPasswordController,
-  resetPasswordController,
-} from "../controllers/forgotPasswordController";
+import { changePasswordController, forgotPasswordController, resetPasswordController } from "../controllers/changePasswordController";
+
 
 const router = express.Router();
 
