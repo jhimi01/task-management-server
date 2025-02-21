@@ -4,7 +4,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "devStart": "nodemon server.ts"
+    "devStart": "nodemon server.ts",
+    "build": "tsc",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "vercel-build": "npm run build && npm run prisma:generate"
   },
   "keywords": [],
   "author": "",
