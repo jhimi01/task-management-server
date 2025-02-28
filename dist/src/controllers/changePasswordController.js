@@ -154,7 +154,7 @@ var forgotPasswordController = function (req, res) { return __awaiter(void 0, vo
                     from: process.env.EMAIL_USER,
                     to: user.email,
                     subject: "Reset your password",
-                    text: "http://localhost:5173/forgot-password/".concat(user.id, "/").concat(token),
+                    text: "https://task-management-server-pmpg.vercel.app/auth/forgot-password/".concat(user.id, "/").concat(token),
                 };
                 transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
