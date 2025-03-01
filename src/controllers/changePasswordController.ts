@@ -113,7 +113,7 @@ export const forgotPasswordController = async (req: any, res: any) => {
       from: process.env.EMAIL_USER,
       to: user.email,
       subject: "Reset your password",
-      text: `http://localhost:5173/forgot-password/${user.id}/${token}`,
+      text: `https://task-management-client-chi-nine.vercel.app/forgot-password/${user.id}/${token}`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
